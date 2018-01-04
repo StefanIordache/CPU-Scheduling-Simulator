@@ -15,7 +15,7 @@ namespace CPU_Scheduling_Simulator
         public Form1()
         {
             InitializeComponent();
-            
+
         }
     }
 }
