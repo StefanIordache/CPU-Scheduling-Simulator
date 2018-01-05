@@ -33,8 +33,6 @@ namespace CPU_Scheduling_Simulator.Models
 
         public int LastExitTime { get; set; }
 
-        public double CompletedPercentage { get; set; }
-
         public ProcessStatus Status { get; set; }
 
         public bool CPUBound { get; set; }
@@ -64,23 +62,6 @@ namespace CPU_Scheduling_Simulator.Models
             }
         }
 
-        public Process(Process prevProcess)
-        {
-            Id = prevProcess.Id;
-            ArrivalTime = prevProcess.ArrivalTime;
-            Duration = prevProcess.Duration;
-            RemainingDuration = prevProcess.RemainingDuration;
-            FinishTime = prevProcess.FinishTime;
-            Finished = prevProcess.Finished;
-            Priority = prevProcess.Priority;
-            BurstTime = prevProcess.BurstTime;
-            IOTime = prevProcess.IOTime;
-            LastEnterTime = prevProcess.LastEnterTime;
-            LastExitTime = prevProcess.LastExitTime;
-            CompletedPercentage = prevProcess.CompletedPercentage;
-            Status = prevProcess.Status;
-            CPUBound = prevProcess.CPUBound;
-        }
     }
 
     public enum ProcessStatus
