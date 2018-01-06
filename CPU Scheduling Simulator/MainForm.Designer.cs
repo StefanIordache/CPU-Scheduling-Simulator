@@ -2,7 +2,7 @@
 
 namespace CPU_Scheduling_Simulator
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace CPU_Scheduling_Simulator
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelInput = new System.Windows.Forms.Panel();
             this.labelIOTime = new System.Windows.Forms.Label();
             this.labelBurstTime = new System.Windows.Forms.Label();

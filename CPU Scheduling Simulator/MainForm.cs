@@ -15,10 +15,10 @@ using Scheduler = CPU_Scheduling_Simulator.Models.Scheduler;
 
 namespace CPU_Scheduling_Simulator
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -44,6 +44,12 @@ namespace CPU_Scheduling_Simulator
                 int priority = Int32.Parse(priorityString);
                 int burstTime = Int32.Parse(burstTimeString);
                 int ioTime = Int32.Parse(ioTimeString);
+
+                if (ioTime == 0)
+                {
+                    burstTime = duration;
+                    burstTimeString = durationString;
+                }
 
                 Process newProcess = new Process(Global.Scheduler.ProcessesList.Count + 1, duration, arrivalTime, priority, burstTime, ioTime);
                 Global.Scheduler.ProcessesList.Add(newProcess);
@@ -81,14 +87,17 @@ namespace CPU_Scheduling_Simulator
             {
                 if (radioButtonFCFS.Checked)
                 {
+                    Global.Scheduler.Algorithm = SchedulerAlgorithm.FCFS;
                     Global.Scheduler.solveFCFS();
                 }
                 else if (radioButtonSJF.Checked)
                 {
+                    Global.Scheduler.Algorithm = SchedulerAlgorithm.SJF;
                     Global.Scheduler.solveSJF();
                 }
                 else if (radioButtonRR.Checked)
                 {
+                    Global.Scheduler.Algorithm = SchedulerAlgorithm.RR;
                     Global.Scheduler.solveRR();
                 }
             }
