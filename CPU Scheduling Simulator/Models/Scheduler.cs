@@ -23,6 +23,12 @@ namespace CPU_Scheduling_Simulator.Models
 
         public double AverageResponseTime { get; set; }
 
+        public double AverageWaitingProcesses { get; set; }
+
+        public double AverageCPUUtilisation { get; set; }
+
+        public IList<Process> ProcessesEnded { get; set; }
+
         public IList<Process> ProcessesList { get; set; }
 
         public IList<Process> ProcessesQueue { get; set; }
@@ -34,17 +40,19 @@ namespace CPU_Scheduling_Simulator.Models
         public Scheduler()
         {
             CurrentTime = 0;
+            AverageResponseTime = AverageCPUUtilisation = AverageWaitingProcesses = AverageWaitingTime = AverageTurnaroundTime =  0;
             Status = SchedulerStatus.Off;
-            ProcessesList = new List<Process>();
+            ProcessesList  = new List<Process>();
             ProcessesQueue = new List<Process>();
             ProcessesOrder = new List<Process>();
+            ProcessesEnded = new List<Process>();
             KeyTimes = new List<KeyTime>();
         }
 
         public void RemoveProcess(int id)
         {
-            Process toBeRemovedFromList = ProcessesList.FirstOrDefault(c => c.Id == id);
-            Process toBeRemovedFromQueue = ProcessesQueue.FirstOrDefault(c => c.Id == id);
+            Process toBeRemovedFromList   = ProcessesList.FirstOrDefault(c => c.Id == id);
+            Process toBeRemovedFromQueue  = ProcessesQueue.FirstOrDefault(c => c.Id == id);
             if (toBeRemovedFromList != null)
             {
                 ProcessesList.Remove(toBeRemovedFromList);
@@ -74,7 +82,6 @@ namespace CPU_Scheduling_Simulator.Models
         {
             CurrentTime = 0;
             Status = SchedulerStatus.On;
-
             ProcessesQueue = ProcessesList;
             //Queue Starts with ascending order of processes by Arrival Time. 
             ProcessesQueue = ProcessesQueue.OrderBy(c => c.ArrivalTime).ToList();
@@ -88,7 +95,7 @@ namespace CPU_Scheduling_Simulator.Models
                 keyTime.OngoingProcess = null;
                 keyTime.OutgoingProcess = null;
                 keyTime.Timestamp = CurrentTime;
-                ++CurrentTime;
+                ++CurrentTime;;
                 KeyTimes.Add(keyTime);
             }
 
@@ -107,6 +114,7 @@ namespace CPU_Scheduling_Simulator.Models
                 keyTime.OngoingProcess = firstProcess;
                 KeyTimes.Add(keyTime);
                 ++CurrentTime;
+                ++AverageCPUUtilisation;
             }
 
             //Continue processing 
@@ -115,9 +123,12 @@ namespace CPU_Scheduling_Simulator.Models
 
             while (ProcessesQueue.Count > 0 || lastKeyTime.OngoingProcess != null || currentKeyTime.OngoingProcess != null)
             {
+   
                 currentKeyTime = new KeyTime();
                 lastKeyTime = KeyTimes[CurrentTime - 1];
                 currentKeyTime.Timestamp = CurrentTime;
+
+                //
 
                 //Last process action on current moment
                 var lastOngoingProcessResult = CheckForProcessContinuity(CloneObject.CloneJson(lastKeyTime.OngoingProcess));
@@ -128,22 +139,33 @@ namespace CPU_Scheduling_Simulator.Models
                     currentKeyTime.OutgoingProcess = null;
                     currentKeyTime.OngoingProcess = lastOngoingProcessResult.Item2;
                     currentKeyTime.CpuOnLoad = true;
+                    ++AverageCPUUtilisation;
+                    if (currentKeyTime.OngoingProcess.ResponseTime == 0)
+                        currentKeyTime.OngoingProcess.ResponseTime = CurrentTime;
                 }
                 else
                 {
-                    if (lastOngoingProcessResult != null)
+                    if (lastOngoingProcessResult != null) 
                     {
                         currentKeyTime.OutgoingProcess = lastOngoingProcessResult.Item1;
                     }
 
                     currentKeyTime.OngoingProcess = TryLoadProcessFromQueue();
+                    if (currentKeyTime.OngoingProcess != null)
+                    { ++AverageCPUUtilisation;
+                        if (currentKeyTime.OngoingProcess.ResponseTime == 0)
+                            currentKeyTime.OngoingProcess.ResponseTime = CurrentTime;
+                    }
+
                 }
 
-                KeyTimes.Add(currentKeyTime);
-                ++CurrentTime;
+                    KeyTimes.Add(currentKeyTime);
+                    AverageWaitingProcesses += ProcessesQueue.Count;
+                     ++CurrentTime;
             }
 
             Status = SchedulerStatus.Off;
+    
         }
 
         //SJF = Shortest Job First
@@ -167,6 +189,7 @@ namespace CPU_Scheduling_Simulator.Models
                 keyTime.Timestamp = CurrentTime;
                 ++CurrentTime;
                 KeyTimes.Add(keyTime);
+
             }
 
             //First process comes at moment zero (special scenario)
@@ -192,6 +215,7 @@ namespace CPU_Scheduling_Simulator.Models
 
             while (ProcessesQueue.Count > 0 || lastKeyTime.OngoingProcess != null || currentKeyTime.OngoingProcess != null)
             {
+
                 currentKeyTime = new KeyTime();
                 lastKeyTime = KeyTimes[CurrentTime - 1];
                 currentKeyTime.Timestamp = CurrentTime;
@@ -205,18 +229,29 @@ namespace CPU_Scheduling_Simulator.Models
                     currentKeyTime.OutgoingProcess = null;
                     currentKeyTime.OngoingProcess = lastOngoingProcessResult.Item2;
                     currentKeyTime.CpuOnLoad = true;
+                    if (currentKeyTime.OngoingProcess.ResponseTime == 0)
+                        currentKeyTime.OngoingProcess.ResponseTime = CurrentTime;
+                    ++AverageCPUUtilisation;
                 }
                 else
                 {
                     if (lastOngoingProcessResult != null)
                     {
                         currentKeyTime.OutgoingProcess = lastOngoingProcessResult.Item1;
+                       
                     }
 
                     currentKeyTime.OngoingProcess = TryLoadProcessFromQueue();
+                    if (currentKeyTime.OngoingProcess != null)
+                    {
+                        ++AverageCPUUtilisation;
+                        if (currentKeyTime.OngoingProcess.ResponseTime == 0)
+                            currentKeyTime.OngoingProcess.ResponseTime = CurrentTime;
+                    }
                 }
 
                 KeyTimes.Add(currentKeyTime);
+                AverageWaitingProcesses += ProcessesQueue.Count;
                 ++CurrentTime;
             }
 
@@ -229,6 +264,45 @@ namespace CPU_Scheduling_Simulator.Models
             
         }
 
+        #region Data Computing
+
+
+
+        public void ComputeData()
+        {
+               
+
+
+            for (int i = 0; i < ProcessesEnded.Count; ++i)
+            {
+                AverageResponseTime += ProcessesEnded[i].ResponseTime;
+                AverageWaitingTime += ProcessesEnded[i].WaitingTime;
+                AverageTurnaroundTime += ProcessesEnded[i].FinishTime - ProcessesEnded[i].ArrivalTime ;
+            }
+
+            AverageResponseTime   /= ProcessesEnded.Count;
+            AverageWaitingTime    /= ProcessesEnded.Count;
+            AverageTurnaroundTime /= ProcessesEnded.Count;
+
+            AverageWaitingProcesses /= (CurrentTime-2);
+            AverageCPUUtilisation /= (CurrentTime-2);
+
+
+            Console.WriteLine(AverageCPUUtilisation);
+            Console.WriteLine(AverageResponseTime);
+            Console.WriteLine(AverageTurnaroundTime);
+            Console.WriteLine(AverageWaitingProcesses);
+            Console.WriteLine(AverageWaitingTime);
+
+        }
+
+
+
+
+        #endregion
+
+
+
         #region Helper Methods
 
         private Process TryLoadProcessFromQueue()
@@ -239,6 +313,7 @@ namespace CPU_Scheduling_Simulator.Models
                 {
                     var processFromQueue = ProcessesQueue[0];
 
+
                     //Process can be loaded from queue
                     if (processFromQueue.ArrivalTime <= CurrentTime && processFromQueue.LastEnterTime == -1 ||
                         processFromQueue.LastExitTime + processFromQueue.IOTime <= CurrentTime)
@@ -246,6 +321,7 @@ namespace CPU_Scheduling_Simulator.Models
                         ProcessesQueue.RemoveAt(0);
                         processFromQueue.Status = ProcessStatus.OnCpu;
                         processFromQueue.LastEnterTime = CurrentTime;
+                          
 
                         return processFromQueue;
                     }
@@ -274,6 +350,9 @@ namespace CPU_Scheduling_Simulator.Models
                         ProcessesQueue.RemoveAt(processFromQueuePosition);
                         processFromQueue.Status = ProcessStatus.OnCpu;
                         processFromQueue.LastEnterTime = CurrentTime;
+
+
+
                         return processFromQueue;
                     }
                 }
@@ -304,6 +383,15 @@ namespace CPU_Scheduling_Simulator.Models
                     p.Status = ProcessStatus.Finished;
                     outcomingProcess = p;
 
+                    if (p.WaitingTime == 0)
+                    {
+                        p.WaitingTime = CurrentTime - p.ArrivalTime;
+                    }
+                    else
+                        p.WaitingTime += CurrentTime - p.LastEnterTime;
+
+                    ProcessesEnded.Insert(0, p);
+
                 }
                 //Process must leave the CPU for I/O
                 else if (p.CPUBound == false && p.LastEnterTime + p.BurstTime == CurrentTime)
@@ -311,6 +399,12 @@ namespace CPU_Scheduling_Simulator.Models
                     p.Status = ProcessStatus.InputOutput;
                     --p.RemainingDuration;
                     p.LastExitTime = CurrentTime;
+                    if (p.WaitingTime == 0)
+                    {
+                        p.WaitingTime = CurrentTime - p.ArrivalTime;
+                    }
+                    else
+                        p.WaitingTime += CurrentTime - p.LastEnterTime;
                     InsertProcessIntoQueue(p);
                     outcomingProcess = p;
                 }

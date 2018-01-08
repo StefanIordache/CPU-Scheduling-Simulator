@@ -89,17 +89,22 @@ namespace CPU_Scheduling_Simulator
                 {
                     Global.Scheduler.Algorithm = SchedulerAlgorithm.FCFS;
                     Global.Scheduler.solveFCFS();
+                    Global.Scheduler.ComputeData();
                 }
                 else if (radioButtonSJF.Checked)
                 {
                     Global.Scheduler.Algorithm = SchedulerAlgorithm.SJF;
                     Global.Scheduler.solveSJF();
+                    Global.Scheduler.ComputeData();
                 }
                 else if (radioButtonRR.Checked)
                 {
                     Global.Scheduler.Algorithm = SchedulerAlgorithm.RR;
                     Global.Scheduler.solveRR();
+                    Global.Scheduler.ComputeData();
                 }
+
+
             }
         }
     }

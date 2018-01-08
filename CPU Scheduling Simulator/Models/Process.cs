@@ -17,6 +17,8 @@ namespace CPU_Scheduling_Simulator.Models
 
         public int RemainingDuration { get; set; }
 
+        public int ResponseTime { get; set; }
+
         public int FinishTime { get; set; }
 
         public int WaitingTime { get; set; }
