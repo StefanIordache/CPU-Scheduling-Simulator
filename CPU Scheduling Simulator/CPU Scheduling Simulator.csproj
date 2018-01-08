@@ -54,6 +54,9 @@
     <Compile Include="ChartForm.Designer.cs">
       <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ColorPicker.cs" />
+    <Compile Include="Helpers\StaticRandom.cs" />
+    <Compile Include="Models\Color.cs" />
     <Compile Include="Helpers\Output.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

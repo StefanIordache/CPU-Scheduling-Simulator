@@ -62,11 +62,15 @@ namespace CPU_Scheduling_Simulator
             this.InputOutput = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.labelProcessesList = new System.Windows.Forms.Label();
+            this.panelResults = new System.Windows.Forms.Panel();
+            this.labelResults = new System.Windows.Forms.Label();
+            this.buttonGanttChart = new System.Windows.Forms.Button();
             this.panelInput.SuspendLayout();
             this.panelAlgorithmSelector.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelProcessesList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcessesList)).BeginInit();
+            this.panelResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInput
@@ -288,7 +292,7 @@ namespace CPU_Scheduling_Simulator
             this.panelProcessesList.Controls.Add(this.labelProcessesList);
             this.panelProcessesList.Location = new System.Drawing.Point(12, 359);
             this.panelProcessesList.Name = "panelProcessesList";
-            this.panelProcessesList.Size = new System.Drawing.Size(619, 415);
+            this.panelProcessesList.Size = new System.Drawing.Size(619, 407);
             this.panelProcessesList.TabIndex = 2;
             // 
             // dataGridViewProcessesList
@@ -374,17 +378,50 @@ namespace CPU_Scheduling_Simulator
             this.labelProcessesList.TabIndex = 1;
             this.labelProcessesList.Text = "Processes List";
             // 
-            // Form1
+            // panelResults
+            // 
+            this.panelResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelResults.Controls.Add(this.buttonGanttChart);
+            this.panelResults.Controls.Add(this.labelResults);
+            this.panelResults.Location = new System.Drawing.Point(637, 14);
+            this.panelResults.Name = "panelResults";
+            this.panelResults.Size = new System.Drawing.Size(867, 752);
+            this.panelResults.TabIndex = 3;
+            // 
+            // labelResults
+            // 
+            this.labelResults.AutoSize = true;
+            this.labelResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelResults.Location = new System.Drawing.Point(346, 0);
+            this.labelResults.Name = "labelResults";
+            this.labelResults.Size = new System.Drawing.Size(117, 32);
+            this.labelResults.TabIndex = 1;
+            this.labelResults.Text = "Results";
+            // 
+            // buttonGanttChart
+            // 
+            this.buttonGanttChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGanttChart.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonGanttChart.Location = new System.Drawing.Point(315, 702);
+            this.buttonGanttChart.Name = "buttonGanttChart";
+            this.buttonGanttChart.Size = new System.Drawing.Size(205, 34);
+            this.buttonGanttChart.TabIndex = 9;
+            this.buttonGanttChart.Text = "View Gantt Chart";
+            this.buttonGanttChart.UseVisualStyleBackColor = true;
+            this.buttonGanttChart.Click += new System.EventHandler(this.buttonGanttChart_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1690, 897);
+            this.Controls.Add(this.panelResults);
             this.Controls.Add(this.panelProcessesList);
             this.Controls.Add(this.panelAlgorithmSelector);
             this.Controls.Add(this.panelInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "CPU Scheduling SImulator";
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
@@ -395,6 +432,8 @@ namespace CPU_Scheduling_Simulator
             this.panelProcessesList.ResumeLayout(false);
             this.panelProcessesList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcessesList)).EndInit();
+            this.panelResults.ResumeLayout(false);
+            this.panelResults.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -431,6 +470,9 @@ namespace CPU_Scheduling_Simulator
         private System.Windows.Forms.RadioButton radioButtonSJF;
         private System.Windows.Forms.RadioButton radioButtonFCFS;
         private System.Windows.Forms.Button buttonStartSimulation;
+        private System.Windows.Forms.Panel panelResults;
+        private System.Windows.Forms.Label labelResults;
+        private System.Windows.Forms.Button buttonGanttChart;
     }
 }
 

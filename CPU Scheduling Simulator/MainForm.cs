@@ -102,5 +102,10 @@ namespace CPU_Scheduling_Simulator
                 }
             }
         }
+
+        private void buttonGanttChart_Click(object sender, EventArgs e)
+        {
+            new ChartForm().Show();
+        }
     }
 }
