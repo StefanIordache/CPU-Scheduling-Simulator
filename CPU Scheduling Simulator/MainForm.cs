@@ -104,6 +104,12 @@ namespace CPU_Scheduling_Simulator
                     Global.Scheduler.ComputeData();
                 }
 
+                cpuchart.Series["Average Response Time"].Points.AddY(Global.Scheduler.AverageResponseTime);
+                cpuchart.Series["Average Waiting Time"].Points.AddY(Global.Scheduler.AverageWaitingTime);
+                cpuchart.Series["Average Turnaround Time"].Points.AddY(Global.Scheduler.AverageTurnaroundTime);
+                cpuchart.Series["Average CPU Utilisation"].Points.AddY(Global.Scheduler.AverageCPUUtilisation);
+                cpuchart.Series["Average No of Waiting Processes"].Points.AddY(Global.Scheduler.AverageWaitingProcesses);
+
 
             }
         }
@@ -111,6 +117,11 @@ namespace CPU_Scheduling_Simulator
         private void buttonGanttChart_Click(object sender, EventArgs e)
         {
             new ChartForm().Show();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

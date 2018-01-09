@@ -287,13 +287,6 @@ namespace CPU_Scheduling_Simulator.Models
             AverageWaitingProcesses /= (CurrentTime-2);
             AverageCPUUtilisation /= (CurrentTime-2);
 
-
-            Console.WriteLine(AverageCPUUtilisation);
-            Console.WriteLine(AverageResponseTime);
-            Console.WriteLine(AverageTurnaroundTime);
-            Console.WriteLine(AverageWaitingProcesses);
-            Console.WriteLine(AverageWaitingTime);
-
         }
 
 
