@@ -23,10 +23,10 @@ namespace CPU_Scheduling_Simulator.Helpers
             {
                 errorResponse += stringBullet + "Arrival Time must be specified.\n";
             }
-            if (String.IsNullOrEmpty(priority))
+            /*if (String.IsNullOrEmpty(priority))
             {
                 errorResponse += stringBullet + "Even if priority is not necessary it must be specified as a number.\n";
-            }
+            }*/
             if (String.IsNullOrEmpty(burstTime))
             {
                 errorResponse += stringBullet + "Burst Time must be specified.\n";
@@ -45,10 +45,10 @@ namespace CPU_Scheduling_Simulator.Helpers
             {
                 errorResponse += stringBullet + "Arrival Time must be a number.\n";
             }
-            if (!String.IsNullOrEmpty(priority) && !CheckIfStringIsNumber(priority))
+           /*if (!String.IsNullOrEmpty(priority) && !CheckIfStringIsNumber(priority))
             {
                 errorResponse += stringBullet + "Process Priority must be a number.\n";
-            }
+            }*/
             if (!String.IsNullOrEmpty(burstTime) && !CheckIfStringIsNumber(burstTime))
             {
                 errorResponse += stringBullet + "Burst Time must be a number.\n";

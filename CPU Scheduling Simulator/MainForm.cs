@@ -28,7 +28,8 @@ namespace CPU_Scheduling_Simulator
         {
             var durationString = textBoxDuration.Text;
             var arrivalTimeString = textBoxArrivalTime.Text;
-            var priorityString = textBoxPriority.Text;
+            var priorityString = "0";
+            //var priorityString = textBoxPriority.Text;
             var burstTimeString = textBoxBurstTime.Text;
             var ioTimeString = textBoxIOTime.Text;
 
@@ -104,11 +105,11 @@ namespace CPU_Scheduling_Simulator
                     Global.Scheduler.ComputeData();
                 }
 
-                cpuchart.Series["Average Response Time"].Points.AddY(Global.Scheduler.AverageResponseTime);
-                cpuchart.Series["Average Waiting Time"].Points.AddY(Global.Scheduler.AverageWaitingTime);
-                cpuchart.Series["Average Turnaround Time"].Points.AddY(Global.Scheduler.AverageTurnaroundTime);
-                cpuchart.Series["Average CPU Utilisation"].Points.AddY(Global.Scheduler.AverageCPUUtilisation);
-                cpuchart.Series["Average No of Waiting Processes"].Points.AddY(Global.Scheduler.AverageWaitingProcesses);
+                cpuChart.Series["Average Response Time"].Points.AddY(Global.Scheduler.AverageResponseTime);
+                cpuChart.Series["Average Waiting Time"].Points.AddY(Global.Scheduler.AverageWaitingTime);
+                cpuChart.Series["Average Turnaround Time"].Points.AddY(Global.Scheduler.AverageTurnaroundTime);
+                cpuChart.Series["Average CPU Utilisation"].Points.AddY(Global.Scheduler.AverageCPUUtilisation);
+                cpuChart.Series["Average No of Waiting Processes"].Points.AddY(Global.Scheduler.AverageWaitingProcesses);
 
 
             }
@@ -119,9 +120,5 @@ namespace CPU_Scheduling_Simulator
             new ChartForm().Show();
         }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
