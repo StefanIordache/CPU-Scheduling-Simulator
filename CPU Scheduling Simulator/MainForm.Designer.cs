@@ -70,7 +70,7 @@ namespace CPU_Scheduling_Simulator
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.labelProcessesList = new System.Windows.Forms.Label();
             this.panelResults = new System.Windows.Forms.Panel();
-            this.cpuchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cpuChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonGanttChart = new System.Windows.Forms.Button();
             this.labelResults = new System.Windows.Forms.Label();
             this.panelInput.SuspendLayout();
@@ -79,7 +79,7 @@ namespace CPU_Scheduling_Simulator
             this.panelProcessesList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcessesList)).BeginInit();
             this.panelResults.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpuchart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpuChart)).BeginInit();
             this.SuspendLayout();
             // 
             // panelInput
@@ -98,20 +98,19 @@ namespace CPU_Scheduling_Simulator
             this.panelInput.Controls.Add(this.labelDuration);
             this.panelInput.Controls.Add(this.labelInput);
             this.panelInput.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panelInput.Location = new System.Drawing.Point(9, 10);
-            this.panelInput.Margin = new System.Windows.Forms.Padding(2);
+            this.panelInput.Location = new System.Drawing.Point(12, 12);
+            this.panelInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelInput.Name = "panelInput";
-            this.panelInput.Size = new System.Drawing.Size(226, 277);
+            this.panelInput.Size = new System.Drawing.Size(301, 340);
             this.panelInput.TabIndex = 0;
             // 
             // labelIOTime
             // 
             this.labelIOTime.AutoSize = true;
             this.labelIOTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIOTime.Location = new System.Drawing.Point(2, 197);
-            this.labelIOTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelIOTime.Location = new System.Drawing.Point(3, 242);
             this.labelIOTime.Name = "labelIOTime";
-            this.labelIOTime.Size = new System.Drawing.Size(76, 20);
+            this.labelIOTime.Size = new System.Drawing.Size(96, 25);
             this.labelIOTime.TabIndex = 11;
             this.labelIOTime.Text = "I/O Time";
             this.labelIOTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,38 +119,37 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelBurstTime.AutoSize = true;
             this.labelBurstTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBurstTime.Location = new System.Drawing.Point(2, 171);
-            this.labelBurstTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelBurstTime.Location = new System.Drawing.Point(3, 210);
             this.labelBurstTime.Name = "labelBurstTime";
-            this.labelBurstTime.Size = new System.Drawing.Size(95, 20);
+            this.labelBurstTime.Size = new System.Drawing.Size(116, 25);
             this.labelBurstTime.TabIndex = 10;
             this.labelBurstTime.Text = "Burst Time";
             this.labelBurstTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxBurstTime
             // 
-            this.textBoxBurstTime.Location = new System.Drawing.Point(124, 174);
-            this.textBoxBurstTime.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBurstTime.Location = new System.Drawing.Point(165, 214);
+            this.textBoxBurstTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBurstTime.Name = "textBoxBurstTime";
-            this.textBoxBurstTime.Size = new System.Drawing.Size(66, 20);
+            this.textBoxBurstTime.Size = new System.Drawing.Size(87, 22);
             this.textBoxBurstTime.TabIndex = 9;
             // 
             // textBoxIOTime
             // 
-            this.textBoxIOTime.Location = new System.Drawing.Point(124, 197);
-            this.textBoxIOTime.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxIOTime.Location = new System.Drawing.Point(165, 242);
+            this.textBoxIOTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxIOTime.Name = "textBoxIOTime";
-            this.textBoxIOTime.Size = new System.Drawing.Size(66, 20);
+            this.textBoxIOTime.Size = new System.Drawing.Size(87, 22);
             this.textBoxIOTime.TabIndex = 8;
             // 
             // buttonInput
             // 
             this.buttonInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonInput.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonInput.Location = new System.Drawing.Point(63, 245);
-            this.buttonInput.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonInput.Location = new System.Drawing.Point(84, 302);
+            this.buttonInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonInput.Name = "buttonInput";
-            this.buttonInput.Size = new System.Drawing.Size(89, 28);
+            this.buttonInput.Size = new System.Drawing.Size(119, 34);
             this.buttonInput.TabIndex = 7;
             this.buttonInput.Text = "Add to list";
             this.buttonInput.UseVisualStyleBackColor = true;
@@ -159,36 +157,36 @@ namespace CPU_Scheduling_Simulator
             // 
             // textBoxArrivalTime
             // 
-            this.textBoxArrivalTime.Location = new System.Drawing.Point(124, 61);
-            this.textBoxArrivalTime.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxArrivalTime.Location = new System.Drawing.Point(165, 75);
+            this.textBoxArrivalTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxArrivalTime.Name = "textBoxArrivalTime";
-            this.textBoxArrivalTime.Size = new System.Drawing.Size(66, 20);
+            this.textBoxArrivalTime.Size = new System.Drawing.Size(87, 22);
             this.textBoxArrivalTime.TabIndex = 6;
             // 
             // textBoxPriority
             // 
-            this.textBoxPriority.Location = new System.Drawing.Point(124, 116);
-            this.textBoxPriority.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxPriority.Location = new System.Drawing.Point(165, 143);
+            this.textBoxPriority.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPriority.Name = "textBoxPriority";
-            this.textBoxPriority.Size = new System.Drawing.Size(66, 20);
+            this.textBoxPriority.Size = new System.Drawing.Size(87, 22);
             this.textBoxPriority.TabIndex = 5;
+            this.textBoxPriority.Visible = false;
             // 
             // textBoxDuration
             // 
-            this.textBoxDuration.Location = new System.Drawing.Point(124, 88);
-            this.textBoxDuration.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxDuration.Location = new System.Drawing.Point(165, 108);
+            this.textBoxDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxDuration.Name = "textBoxDuration";
-            this.textBoxDuration.Size = new System.Drawing.Size(66, 20);
+            this.textBoxDuration.Size = new System.Drawing.Size(87, 22);
             this.textBoxDuration.TabIndex = 4;
             // 
             // labelArrivalTime
             // 
             this.labelArrivalTime.AutoSize = true;
             this.labelArrivalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArrivalTime.Location = new System.Drawing.Point(2, 61);
-            this.labelArrivalTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelArrivalTime.Location = new System.Drawing.Point(3, 75);
             this.labelArrivalTime.Name = "labelArrivalTime";
-            this.labelArrivalTime.Size = new System.Drawing.Size(102, 20);
+            this.labelArrivalTime.Size = new System.Drawing.Size(128, 25);
             this.labelArrivalTime.TabIndex = 3;
             this.labelArrivalTime.Text = "Arrival Time";
             // 
@@ -196,22 +194,21 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelPriority.AutoSize = true;
             this.labelPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPriority.Location = new System.Drawing.Point(2, 116);
-            this.labelPriority.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPriority.Location = new System.Drawing.Point(3, 143);
             this.labelPriority.Name = "labelPriority";
-            this.labelPriority.Size = new System.Drawing.Size(64, 20);
+            this.labelPriority.Size = new System.Drawing.Size(79, 25);
             this.labelPriority.TabIndex = 2;
             this.labelPriority.Text = "Priority";
             this.labelPriority.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelPriority.Visible = false;
             // 
             // labelDuration
             // 
             this.labelDuration.AutoSize = true;
             this.labelDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDuration.Location = new System.Drawing.Point(2, 88);
-            this.labelDuration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDuration.Location = new System.Drawing.Point(3, 108);
             this.labelDuration.Name = "labelDuration";
-            this.labelDuration.Size = new System.Drawing.Size(78, 20);
+            this.labelDuration.Size = new System.Drawing.Size(93, 25);
             this.labelDuration.TabIndex = 1;
             this.labelDuration.Text = "Duration";
             // 
@@ -219,10 +216,9 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelInput.AutoSize = true;
             this.labelInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInput.Location = new System.Drawing.Point(72, 0);
-            this.labelInput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelInput.Location = new System.Drawing.Point(96, 0);
             this.labelInput.Name = "labelInput";
-            this.labelInput.Size = new System.Drawing.Size(65, 26);
+            this.labelInput.Size = new System.Drawing.Size(83, 32);
             this.labelInput.TabIndex = 0;
             this.labelInput.Text = "Input";
             // 
@@ -233,20 +229,20 @@ namespace CPU_Scheduling_Simulator
             this.panelAlgorithmSelector.Controls.Add(this.groupBox1);
             this.panelAlgorithmSelector.Controls.Add(this.labelAlgorithmSelector);
             this.panelAlgorithmSelector.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panelAlgorithmSelector.Location = new System.Drawing.Point(239, 11);
-            this.panelAlgorithmSelector.Margin = new System.Windows.Forms.Padding(2);
+            this.panelAlgorithmSelector.Location = new System.Drawing.Point(319, 14);
+            this.panelAlgorithmSelector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelAlgorithmSelector.Name = "panelAlgorithmSelector";
-            this.panelAlgorithmSelector.Size = new System.Drawing.Size(234, 277);
+            this.panelAlgorithmSelector.Size = new System.Drawing.Size(311, 340);
             this.panelAlgorithmSelector.TabIndex = 1;
             // 
             // buttonStartSimulation
             // 
             this.buttonStartSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStartSimulation.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonStartSimulation.Location = new System.Drawing.Point(42, 245);
-            this.buttonStartSimulation.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStartSimulation.Location = new System.Drawing.Point(56, 302);
+            this.buttonStartSimulation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStartSimulation.Name = "buttonStartSimulation";
-            this.buttonStartSimulation.Size = new System.Drawing.Size(154, 28);
+            this.buttonStartSimulation.Size = new System.Drawing.Size(205, 34);
             this.buttonStartSimulation.TabIndex = 8;
             this.buttonStartSimulation.Text = "Start Simulation";
             this.buttonStartSimulation.UseVisualStyleBackColor = true;
@@ -258,11 +254,11 @@ namespace CPU_Scheduling_Simulator
             this.groupBox1.Controls.Add(this.radioButtonSJF);
             this.groupBox1.Controls.Add(this.radioButtonFCFS);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(24, 46);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(32, 57);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(138, 112);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(184, 138);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select one algorithm:";
@@ -270,22 +266,24 @@ namespace CPU_Scheduling_Simulator
             // radioButtonRR
             // 
             this.radioButtonRR.AutoSize = true;
-            this.radioButtonRR.Location = new System.Drawing.Point(5, 63);
-            this.radioButtonRR.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonRR.Enabled = false;
+            this.radioButtonRR.Location = new System.Drawing.Point(7, 78);
+            this.radioButtonRR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButtonRR.Name = "radioButtonRR";
-            this.radioButtonRR.Size = new System.Drawing.Size(41, 17);
+            this.radioButtonRR.Size = new System.Drawing.Size(49, 21);
             this.radioButtonRR.TabIndex = 2;
             this.radioButtonRR.TabStop = true;
             this.radioButtonRR.Text = "RR";
             this.radioButtonRR.UseVisualStyleBackColor = true;
+            this.radioButtonRR.Visible = false;
             // 
             // radioButtonSJF
             // 
             this.radioButtonSJF.AutoSize = true;
-            this.radioButtonSJF.Location = new System.Drawing.Point(5, 41);
-            this.radioButtonSJF.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonSJF.Location = new System.Drawing.Point(7, 50);
+            this.radioButtonSJF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButtonSJF.Name = "radioButtonSJF";
-            this.radioButtonSJF.Size = new System.Drawing.Size(43, 17);
+            this.radioButtonSJF.Size = new System.Drawing.Size(53, 21);
             this.radioButtonSJF.TabIndex = 1;
             this.radioButtonSJF.TabStop = true;
             this.radioButtonSJF.Text = "SJF";
@@ -294,10 +292,10 @@ namespace CPU_Scheduling_Simulator
             // radioButtonFCFS
             // 
             this.radioButtonFCFS.AutoSize = true;
-            this.radioButtonFCFS.Location = new System.Drawing.Point(5, 18);
-            this.radioButtonFCFS.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonFCFS.Location = new System.Drawing.Point(7, 22);
+            this.radioButtonFCFS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButtonFCFS.Name = "radioButtonFCFS";
-            this.radioButtonFCFS.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonFCFS.Size = new System.Drawing.Size(63, 21);
             this.radioButtonFCFS.TabIndex = 0;
             this.radioButtonFCFS.TabStop = true;
             this.radioButtonFCFS.Text = "FCFS";
@@ -307,10 +305,9 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelAlgorithmSelector.AutoSize = true;
             this.labelAlgorithmSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAlgorithmSelector.Location = new System.Drawing.Point(20, 0);
-            this.labelAlgorithmSelector.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAlgorithmSelector.Location = new System.Drawing.Point(27, 0);
             this.labelAlgorithmSelector.Name = "labelAlgorithmSelector";
-            this.labelAlgorithmSelector.Size = new System.Drawing.Size(209, 26);
+            this.labelAlgorithmSelector.Size = new System.Drawing.Size(266, 32);
             this.labelAlgorithmSelector.TabIndex = 0;
             this.labelAlgorithmSelector.Text = "Algorithm Selector";
             // 
@@ -320,10 +317,10 @@ namespace CPU_Scheduling_Simulator
             this.panelProcessesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelProcessesList.Controls.Add(this.dataGridViewProcessesList);
             this.panelProcessesList.Controls.Add(this.labelProcessesList);
-            this.panelProcessesList.Location = new System.Drawing.Point(9, 292);
-            this.panelProcessesList.Margin = new System.Windows.Forms.Padding(2);
+            this.panelProcessesList.Location = new System.Drawing.Point(12, 359);
+            this.panelProcessesList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelProcessesList.Name = "panelProcessesList";
-            this.panelProcessesList.Size = new System.Drawing.Size(465, 331);
+            this.panelProcessesList.Size = new System.Drawing.Size(619, 407);
             this.panelProcessesList.TabIndex = 2;
             // 
             // dataGridViewProcessesList
@@ -345,11 +342,11 @@ namespace CPU_Scheduling_Simulator
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewProcessesList.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewProcessesList.Location = new System.Drawing.Point(14, 28);
-            this.dataGridViewProcessesList.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewProcessesList.Location = new System.Drawing.Point(19, 34);
+            this.dataGridViewProcessesList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewProcessesList.Name = "dataGridViewProcessesList";
             this.dataGridViewProcessesList.RowTemplate.Height = 24;
-            this.dataGridViewProcessesList.Size = new System.Drawing.Size(435, 289);
+            this.dataGridViewProcessesList.Size = new System.Drawing.Size(580, 356);
             this.dataGridViewProcessesList.TabIndex = 2;
             this.dataGridViewProcessesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProcessesList_CellContentClick);
             // 
@@ -404,37 +401,37 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelProcessesList.AutoSize = true;
             this.labelProcessesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProcessesList.Location = new System.Drawing.Point(148, 0);
-            this.labelProcessesList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelProcessesList.Location = new System.Drawing.Point(197, 0);
             this.labelProcessesList.Name = "labelProcessesList";
-            this.labelProcessesList.Size = new System.Drawing.Size(168, 26);
+            this.labelProcessesList.Size = new System.Drawing.Size(213, 32);
             this.labelProcessesList.TabIndex = 1;
             this.labelProcessesList.Text = "Processes List";
             // 
             // panelResults
             // 
             this.panelResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelResults.Controls.Add(this.cpuchart);
+            this.panelResults.Controls.Add(this.cpuChart);
             this.panelResults.Controls.Add(this.buttonGanttChart);
             this.panelResults.Controls.Add(this.labelResults);
-            this.panelResults.Location = new System.Drawing.Point(478, 11);
-            this.panelResults.Margin = new System.Windows.Forms.Padding(2);
+            this.panelResults.Location = new System.Drawing.Point(637, 14);
+            this.panelResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelResults.Name = "panelResults";
-            this.panelResults.Size = new System.Drawing.Size(651, 611);
+            this.panelResults.Size = new System.Drawing.Size(867, 752);
             this.panelResults.TabIndex = 3;
             // 
-            // cpuchart
+            // cpuChart
             // 
-            this.cpuchart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
+            this.cpuChart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
             chartArea1.Name = "ChartArea1";
-            this.cpuchart.ChartAreas.Add(chartArea1);
+            this.cpuChart.ChartAreas.Add(chartArea1);
             legend1.AutoFitMinFontSize = 5;
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend1.Name = "Legend1";
-            this.cpuchart.Legends.Add(legend1);
-            this.cpuchart.Location = new System.Drawing.Point(3, 22);
-            this.cpuchart.Name = "cpuchart";
-            this.cpuchart.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cpuChart.Legends.Add(legend1);
+            this.cpuChart.Location = new System.Drawing.Point(4, 27);
+            this.cpuChart.Margin = new System.Windows.Forms.Padding(4);
+            this.cpuChart.Name = "cpuChart";
+            this.cpuChart.RightToLeft = System.Windows.Forms.RightToLeft.No;
             series1.ChartArea = "ChartArea1";
             series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.IsValueShownAsLabel = true;
@@ -460,24 +457,23 @@ namespace CPU_Scheduling_Simulator
             series5.IsValueShownAsLabel = true;
             series5.Legend = "Legend1";
             series5.Name = "Average No of Waiting Processes";
-            this.cpuchart.Series.Add(series1);
-            this.cpuchart.Series.Add(series2);
-            this.cpuchart.Series.Add(series3);
-            this.cpuchart.Series.Add(series4);
-            this.cpuchart.Series.Add(series5);
-            this.cpuchart.Size = new System.Drawing.Size(589, 551);
-            this.cpuchart.TabIndex = 10;
-            this.cpuchart.Text = "chart1";
-            this.cpuchart.Click += new System.EventHandler(this.chart1_Click);
+            this.cpuChart.Series.Add(series1);
+            this.cpuChart.Series.Add(series2);
+            this.cpuChart.Series.Add(series3);
+            this.cpuChart.Series.Add(series4);
+            this.cpuChart.Series.Add(series5);
+            this.cpuChart.Size = new System.Drawing.Size(785, 678);
+            this.cpuChart.TabIndex = 10;
+            this.cpuChart.Text = "chart1";
             // 
             // buttonGanttChart
             // 
             this.buttonGanttChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGanttChart.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonGanttChart.Location = new System.Drawing.Point(236, 578);
-            this.buttonGanttChart.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonGanttChart.Location = new System.Drawing.Point(315, 711);
+            this.buttonGanttChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGanttChart.Name = "buttonGanttChart";
-            this.buttonGanttChart.Size = new System.Drawing.Size(154, 28);
+            this.buttonGanttChart.Size = new System.Drawing.Size(205, 34);
             this.buttonGanttChart.TabIndex = 9;
             this.buttonGanttChart.Text = "View Gantt Chart";
             this.buttonGanttChart.UseVisualStyleBackColor = true;
@@ -487,25 +483,24 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelResults.AutoSize = true;
             this.labelResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelResults.Location = new System.Drawing.Point(214, -3);
-            this.labelResults.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelResults.Location = new System.Drawing.Point(285, -4);
             this.labelResults.Name = "labelResults";
-            this.labelResults.Size = new System.Drawing.Size(176, 26);
+            this.labelResults.Size = new System.Drawing.Size(225, 32);
             this.labelResults.TabIndex = 1;
             this.labelResults.Text = "Scheduler Data";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 629);
+            this.ClientSize = new System.Drawing.Size(1444, 774);
             this.Controls.Add(this.panelResults);
             this.Controls.Add(this.panelProcessesList);
             this.Controls.Add(this.panelAlgorithmSelector);
             this.Controls.Add(this.panelInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "CPU Scheduling SImulator";
             this.panelInput.ResumeLayout(false);
@@ -519,7 +514,7 @@ namespace CPU_Scheduling_Simulator
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcessesList)).EndInit();
             this.panelResults.ResumeLayout(false);
             this.panelResults.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cpuchart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cpuChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -559,7 +554,7 @@ namespace CPU_Scheduling_Simulator
         private System.Windows.Forms.Panel panelResults;
         private System.Windows.Forms.Label labelResults;
         private System.Windows.Forms.Button buttonGanttChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart cpuchart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart cpuChart;
     }
 }
 
