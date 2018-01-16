@@ -72,6 +72,9 @@ namespace CPU_Scheduling_Simulator
             this.cpuChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonGanttChart = new System.Windows.Forms.Button();
             this.labelResults = new System.Windows.Forms.Label();
+            this.buttonLoadFromFile = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButtonBoth = new System.Windows.Forms.RadioButton();
             this.panelInput.SuspendLayout();
             this.panelAlgorithmSelector.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -84,6 +87,8 @@ namespace CPU_Scheduling_Simulator
             // panelInput
             // 
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInput.Controls.Add(this.label1);
+            this.panelInput.Controls.Add(this.buttonLoadFromFile);
             this.panelInput.Controls.Add(this.labelIOTime);
             this.panelInput.Controls.Add(this.labelBurstTime);
             this.panelInput.Controls.Add(this.textBoxBurstTime);
@@ -145,7 +150,7 @@ namespace CPU_Scheduling_Simulator
             // 
             this.buttonInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonInput.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonInput.Location = new System.Drawing.Point(84, 302);
+            this.buttonInput.Location = new System.Drawing.Point(84, 228);
             this.buttonInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonInput.Name = "buttonInput";
             this.buttonInput.Size = new System.Drawing.Size(119, 34);
@@ -249,6 +254,7 @@ namespace CPU_Scheduling_Simulator
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButtonBoth);
             this.groupBox1.Controls.Add(this.radioButtonSJF);
             this.groupBox1.Controls.Add(this.radioButtonFCFS);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -256,7 +262,7 @@ namespace CPU_Scheduling_Simulator
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(184, 88);
+            this.groupBox1.Size = new System.Drawing.Size(184, 110);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select one algorithm:";
@@ -461,6 +467,7 @@ namespace CPU_Scheduling_Simulator
             this.buttonGanttChart.TabIndex = 9;
             this.buttonGanttChart.Text = "View Gantt Chart";
             this.buttonGanttChart.UseVisualStyleBackColor = true;
+            this.buttonGanttChart.Visible = false;
             this.buttonGanttChart.Click += new System.EventHandler(this.buttonGanttChart_Click);
             // 
             // labelResults
@@ -472,6 +479,40 @@ namespace CPU_Scheduling_Simulator
             this.labelResults.Size = new System.Drawing.Size(225, 32);
             this.labelResults.TabIndex = 1;
             this.labelResults.Text = "Scheduler Data";
+            // 
+            // buttonLoadFromFile
+            // 
+            this.buttonLoadFromFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoadFromFile.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonLoadFromFile.Location = new System.Drawing.Point(65, 302);
+            this.buttonLoadFromFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonLoadFromFile.Name = "buttonLoadFromFile";
+            this.buttonLoadFromFile.Size = new System.Drawing.Size(156, 34);
+            this.buttonLoadFromFile.TabIndex = 12;
+            this.buttonLoadFromFile.Text = "Load from file";
+            this.buttonLoadFromFile.UseVisualStyleBackColor = true;
+            this.buttonLoadFromFile.Click += new System.EventHandler(this.buttonLoadFromFile_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(133, 273);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Or";
+            // 
+            // radioButtonBoth
+            // 
+            this.radioButtonBoth.AutoSize = true;
+            this.radioButtonBoth.Location = new System.Drawing.Point(7, 76);
+            this.radioButtonBoth.Name = "radioButtonBoth";
+            this.radioButtonBoth.Size = new System.Drawing.Size(88, 21);
+            this.radioButtonBoth.TabIndex = 2;
+            this.radioButtonBoth.TabStop = true;
+            this.radioButtonBoth.Text = "Run Both";
+            this.radioButtonBoth.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -538,6 +579,9 @@ namespace CPU_Scheduling_Simulator
         private System.Windows.Forms.Label labelResults;
         private System.Windows.Forms.Button buttonGanttChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart cpuChart;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonLoadFromFile;
+        private System.Windows.Forms.RadioButton radioButtonBoth;
     }
 }
 

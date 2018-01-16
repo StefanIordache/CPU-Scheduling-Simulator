@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -54,8 +55,7 @@ namespace CPU_Scheduling_Simulator
 
                 Process newProcess = new Process(Global.Scheduler.ProcessesList.Count + 1, duration, arrivalTime, priority, burstTime, ioTime);
                 Global.Scheduler.ProcessesList.Add(newProcess);
-                var newProcessClone = CloneObject.CloneJson(newProcess);
-                Global.ProcessesInList.Add(newProcessClone);
+                Global.ProcessesInList.Add(CloneObject.CloneJson(newProcess));
 
                 Input.AddProcessToTable(dataGridViewProcessesList, newProcess.Id, durationString, arrivalTimeString, priorityString, burstTimeString, ioTimeString);
             }
@@ -106,6 +106,8 @@ namespace CPU_Scheduling_Simulator
                     Global.Scheduler.Algorithm = SchedulerAlgorithm.FCFS;
                     Global.Scheduler.solveFCFS();
                     Global.Scheduler.ComputeData();
+
+                    buttonGanttChart.Visible = true;
                 }
                 else if (radioButtonSJF.Checked)
                 {
@@ -117,6 +119,38 @@ namespace CPU_Scheduling_Simulator
                     Global.Scheduler.Algorithm = SchedulerAlgorithm.SJF;
                     Global.Scheduler.solveSJF();
                     Global.Scheduler.ComputeData();
+
+                    buttonGanttChart.Visible = true;
+                }
+                else if (radioButtonBoth.Checked)
+                {
+                    //FCFS
+                    Global.Scheduler = new Scheduler();
+                    if (Global.ProcessesInList.Count > 0)
+                    {
+                        Global.Scheduler.ProcessesList = CloneObject.CloneJson(Global.ProcessesInList);
+                    }
+                    Global.Scheduler.Algorithm = SchedulerAlgorithm.FCFS;
+                    Global.Scheduler.solveFCFS();
+                    Global.Scheduler.ComputeData();
+
+                    cpuChart.Series["Average Response Time"].Points.AddY(Global.Scheduler.AverageResponseTime);
+                    cpuChart.Series["Average Waiting Time"].Points.AddY(Global.Scheduler.AverageWaitingTime);
+                    cpuChart.Series["Average Turnaround Time"].Points.AddY(Global.Scheduler.AverageTurnaroundTime);
+                    cpuChart.Series["Average CPU Utilisation"].Points.AddY(Global.Scheduler.AverageCPUUtilisation);
+                    cpuChart.Series["Average No of Waiting Processes"].Points.AddY(Global.Scheduler.AverageWaitingProcesses);
+
+                    //SJF
+                    Global.Scheduler = new Scheduler();
+                    if (Global.ProcessesInList.Count > 0)
+                    {
+                        Global.Scheduler.ProcessesList = CloneObject.CloneJson(Global.ProcessesInList);
+                    }
+                    Global.Scheduler.Algorithm = SchedulerAlgorithm.SJF;
+                    Global.Scheduler.solveSJF();
+                    Global.Scheduler.ComputeData();
+
+                    buttonGanttChart.Visible = false;
                 }
 
                 cpuChart.Series["Average Response Time"].Points.AddY(Global.Scheduler.AverageResponseTime);
@@ -134,5 +168,43 @@ namespace CPU_Scheduling_Simulator
             new ChartForm().Show();
         }
 
+        private void buttonLoadFromFile_Click(object sender, EventArgs e)
+        {
+            string line;
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Text files | *.txt"; 
+            dialog.Multiselect = false; 
+            if (dialog.ShowDialog() == DialogResult.OK) 
+            {
+                String path = dialog.FileName; 
+                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding())) 
+                {
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] bits = line.Split(' ');
+
+                        var priorityString = "0";
+                        int duration = Int32.Parse(bits[1]);
+                        int arrivalTime = Int32.Parse(bits[0]);
+                        int priority = Int32.Parse(priorityString);
+                        int burstTime = Int32.Parse(bits[2]);
+                        int ioTime = Int32.Parse(bits[3]);
+
+                        if (ioTime == 0)
+                        {
+                            burstTime = duration;
+                            bits[2] = bits[1];
+                        }
+
+                        Process newProcess = new Process(Global.Scheduler.ProcessesList.Count + 1, duration, arrivalTime, priority, burstTime, ioTime);
+                        Global.Scheduler.ProcessesList.Add(newProcess);
+                        Global.ProcessesInList.Add(CloneObject.CloneJson(newProcess));
+
+                        Input.AddProcessToTable(dataGridViewProcessesList, newProcess.Id, bits[1], bits[0], priorityString, bits[2], bits[3]);
+                    }
+                }
+            }
+        }
     }
 }
