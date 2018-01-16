@@ -255,12 +255,6 @@ namespace CPU_Scheduling_Simulator.Models
             Status = SchedulerStatus.Off;
         }
 
-        //RR = Round Robin
-        public void solveRR()
-        {
-            
-        }
-
         #region Data Computing
 
 
@@ -290,8 +284,6 @@ namespace CPU_Scheduling_Simulator.Models
 
 
         #endregion
-
-
 
         #region Helper Methods
 

@@ -54,6 +54,8 @@ namespace CPU_Scheduling_Simulator
 
                 Process newProcess = new Process(Global.Scheduler.ProcessesList.Count + 1, duration, arrivalTime, priority, burstTime, ioTime);
                 Global.Scheduler.ProcessesList.Add(newProcess);
+                var newProcessClone = CloneObject.CloneJson(newProcess);
+                Global.ProcessesInList.Add(newProcessClone);
 
                 Input.AddProcessToTable(dataGridViewProcessesList, newProcess.Id, durationString, arrivalTimeString, priorityString, burstTimeString, ioTimeString);
             }
@@ -75,6 +77,14 @@ namespace CPU_Scheduling_Simulator
                 }
                 senderGrid.Rows.Remove(senderGrid.Rows[e.RowIndex]);
                 Global.Scheduler.RemoveProcess(processToBeDeletedId);
+                for (int it = 0; it < Global.ProcessesInList.Count; it++)
+                {
+                    if (Global.ProcessesInList[it].Id == processToBeDeletedId)
+                    {
+                        Global.ProcessesInList.RemoveAt(it);
+                        it = Global.ProcessesInList.Count + 1;
+                    }
+                }
             }
         }
 
@@ -88,20 +98,24 @@ namespace CPU_Scheduling_Simulator
             {
                 if (radioButtonFCFS.Checked)
                 {
+                    Global.Scheduler = new Scheduler();
+                    if (Global.ProcessesInList.Count > 0)
+                    {
+                        Global.Scheduler.ProcessesList = CloneObject.CloneJson(Global.ProcessesInList);
+                    }
                     Global.Scheduler.Algorithm = SchedulerAlgorithm.FCFS;
                     Global.Scheduler.solveFCFS();
                     Global.Scheduler.ComputeData();
                 }
                 else if (radioButtonSJF.Checked)
                 {
+                    Global.Scheduler = new Scheduler();
+                    if (Global.ProcessesInList.Count > 0)
+                    {
+                        Global.Scheduler.ProcessesList = CloneObject.CloneJson(Global.ProcessesInList);
+                    }
                     Global.Scheduler.Algorithm = SchedulerAlgorithm.SJF;
                     Global.Scheduler.solveSJF();
-                    Global.Scheduler.ComputeData();
-                }
-                else if (radioButtonRR.Checked)
-                {
-                    Global.Scheduler.Algorithm = SchedulerAlgorithm.RR;
-                    Global.Scheduler.solveRR();
                     Global.Scheduler.ComputeData();
                 }
 

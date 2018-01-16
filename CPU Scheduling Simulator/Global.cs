@@ -14,8 +14,11 @@ namespace CPU_Scheduling_Simulator
         static Global()
         {
             Scheduler = new Scheduler();
+            ProcessesInList = new List<Process>();
         }
 
         public static Scheduler Scheduler { get; set; }
+
+        public static IList<Process> ProcessesInList { get; set; }
     }
 }

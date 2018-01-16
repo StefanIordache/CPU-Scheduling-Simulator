@@ -55,7 +55,6 @@ namespace CPU_Scheduling_Simulator
             this.panelAlgorithmSelector = new System.Windows.Forms.Panel();
             this.buttonStartSimulation = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonRR = new System.Windows.Forms.RadioButton();
             this.radioButtonSJF = new System.Windows.Forms.RadioButton();
             this.radioButtonFCFS = new System.Windows.Forms.RadioButton();
             this.labelAlgorithmSelector = new System.Windows.Forms.Label();
@@ -108,7 +107,7 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelIOTime.AutoSize = true;
             this.labelIOTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIOTime.Location = new System.Drawing.Point(3, 242);
+            this.labelIOTime.Location = new System.Drawing.Point(6, 179);
             this.labelIOTime.Name = "labelIOTime";
             this.labelIOTime.Size = new System.Drawing.Size(96, 25);
             this.labelIOTime.TabIndex = 11;
@@ -119,7 +118,7 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelBurstTime.AutoSize = true;
             this.labelBurstTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBurstTime.Location = new System.Drawing.Point(3, 210);
+            this.labelBurstTime.Location = new System.Drawing.Point(6, 144);
             this.labelBurstTime.Name = "labelBurstTime";
             this.labelBurstTime.Size = new System.Drawing.Size(116, 25);
             this.labelBurstTime.TabIndex = 10;
@@ -128,7 +127,7 @@ namespace CPU_Scheduling_Simulator
             // 
             // textBoxBurstTime
             // 
-            this.textBoxBurstTime.Location = new System.Drawing.Point(165, 214);
+            this.textBoxBurstTime.Location = new System.Drawing.Point(165, 148);
             this.textBoxBurstTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBurstTime.Name = "textBoxBurstTime";
             this.textBoxBurstTime.Size = new System.Drawing.Size(87, 22);
@@ -136,7 +135,7 @@ namespace CPU_Scheduling_Simulator
             // 
             // textBoxIOTime
             // 
-            this.textBoxIOTime.Location = new System.Drawing.Point(165, 242);
+            this.textBoxIOTime.Location = new System.Drawing.Point(165, 183);
             this.textBoxIOTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxIOTime.Name = "textBoxIOTime";
             this.textBoxIOTime.Size = new System.Drawing.Size(87, 22);
@@ -157,7 +156,7 @@ namespace CPU_Scheduling_Simulator
             // 
             // textBoxArrivalTime
             // 
-            this.textBoxArrivalTime.Location = new System.Drawing.Point(165, 75);
+            this.textBoxArrivalTime.Location = new System.Drawing.Point(165, 50);
             this.textBoxArrivalTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxArrivalTime.Name = "textBoxArrivalTime";
             this.textBoxArrivalTime.Size = new System.Drawing.Size(87, 22);
@@ -165,7 +164,7 @@ namespace CPU_Scheduling_Simulator
             // 
             // textBoxPriority
             // 
-            this.textBoxPriority.Location = new System.Drawing.Point(165, 143);
+            this.textBoxPriority.Location = new System.Drawing.Point(165, 113);
             this.textBoxPriority.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPriority.Name = "textBoxPriority";
             this.textBoxPriority.Size = new System.Drawing.Size(87, 22);
@@ -174,7 +173,7 @@ namespace CPU_Scheduling_Simulator
             // 
             // textBoxDuration
             // 
-            this.textBoxDuration.Location = new System.Drawing.Point(165, 108);
+            this.textBoxDuration.Location = new System.Drawing.Point(165, 84);
             this.textBoxDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxDuration.Name = "textBoxDuration";
             this.textBoxDuration.Size = new System.Drawing.Size(87, 22);
@@ -184,7 +183,7 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelArrivalTime.AutoSize = true;
             this.labelArrivalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArrivalTime.Location = new System.Drawing.Point(3, 75);
+            this.labelArrivalTime.Location = new System.Drawing.Point(6, 47);
             this.labelArrivalTime.Name = "labelArrivalTime";
             this.labelArrivalTime.Size = new System.Drawing.Size(128, 25);
             this.labelArrivalTime.TabIndex = 3;
@@ -194,7 +193,7 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelPriority.AutoSize = true;
             this.labelPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPriority.Location = new System.Drawing.Point(3, 143);
+            this.labelPriority.Location = new System.Drawing.Point(6, 109);
             this.labelPriority.Name = "labelPriority";
             this.labelPriority.Size = new System.Drawing.Size(79, 25);
             this.labelPriority.TabIndex = 2;
@@ -206,7 +205,7 @@ namespace CPU_Scheduling_Simulator
             // 
             this.labelDuration.AutoSize = true;
             this.labelDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDuration.Location = new System.Drawing.Point(3, 108);
+            this.labelDuration.Location = new System.Drawing.Point(6, 81);
             this.labelDuration.Name = "labelDuration";
             this.labelDuration.Size = new System.Drawing.Size(93, 25);
             this.labelDuration.TabIndex = 1;
@@ -250,7 +249,6 @@ namespace CPU_Scheduling_Simulator
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButtonRR);
             this.groupBox1.Controls.Add(this.radioButtonSJF);
             this.groupBox1.Controls.Add(this.radioButtonFCFS);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -258,24 +256,10 @@ namespace CPU_Scheduling_Simulator
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(184, 138);
+            this.groupBox1.Size = new System.Drawing.Size(184, 88);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select one algorithm:";
-            // 
-            // radioButtonRR
-            // 
-            this.radioButtonRR.AutoSize = true;
-            this.radioButtonRR.Enabled = false;
-            this.radioButtonRR.Location = new System.Drawing.Point(7, 78);
-            this.radioButtonRR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButtonRR.Name = "radioButtonRR";
-            this.radioButtonRR.Size = new System.Drawing.Size(49, 21);
-            this.radioButtonRR.TabIndex = 2;
-            this.radioButtonRR.TabStop = true;
-            this.radioButtonRR.Text = "RR";
-            this.radioButtonRR.UseVisualStyleBackColor = true;
-            this.radioButtonRR.Visible = false;
             // 
             // radioButtonSJF
             // 
@@ -547,7 +531,6 @@ namespace CPU_Scheduling_Simulator
         private System.Windows.Forms.DataGridViewTextBoxColumn InputOutput;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonRR;
         private System.Windows.Forms.RadioButton radioButtonSJF;
         private System.Windows.Forms.RadioButton radioButtonFCFS;
         private System.Windows.Forms.Button buttonStartSimulation;
