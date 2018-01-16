@@ -203,6 +203,8 @@ namespace CPU_Scheduling_Simulator
 
                         Input.AddProcessToTable(dataGridViewProcessesList, newProcess.Id, bits[1], bits[0], priorityString, bits[2], bits[3]);
                     }
+
+                    reader.Close();
                 }
             }
         }
