@@ -33,8 +33,6 @@ namespace CPU_Scheduling_Simulator.Models
 
         public IList<Process> ProcessesQueue { get; set; }
 
-        public IList<Process> ProcessesOrder { get; set; }
-
         public IList<KeyTime> KeyTimes { get; set; }
 
         public Scheduler()
@@ -44,7 +42,6 @@ namespace CPU_Scheduling_Simulator.Models
             Status = SchedulerStatus.Off;
             ProcessesList  = new List<Process>();
             ProcessesQueue = new List<Process>();
-            ProcessesOrder = new List<Process>();
             ProcessesEnded = new List<Process>();
             KeyTimes = new List<KeyTime>();
         }
